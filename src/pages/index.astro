@@ -1,17 +1,412 @@
 ---
+import '../styles/global.css';
+import { 
+    CloudRain, 
+    HeartHandshake, 
+    Compass, 
+    Menu, 
+    GraduationCap, 
+    Globe, 
+    Video, 
+    Check, 
+    MapPin, 
+    Quote, 
+    ChevronDown, 
+    Instagram, 
+    Linkedin, 
+    MessageCircle 
+} from 'lucide-astro';
 
+// Dados para os Cards (Agora passando o Componente direto)
+const cards = [
+    { 
+        Icon: CloudRain, 
+        title: "Ansiedade", 
+        desc: "Quando o futuro parece incerto e a mente não consegue descansar no agora." 
+    },
+    { 
+        Icon: HeartHandshake, 
+        title: "Relacionamentos", 
+        desc: "Dificuldades em estabelecer limites, comunicar necessidades ou lidar com términos." 
+    },
+    { 
+        Icon: Compass, 
+        title: "Autoconhecimento", 
+        desc: "A sensação de estar perdida de si mesma e o desejo de reencontrar seu propósito." 
+    }
+];
+
+// Dados para FAQ
+const faqs = [
+    {
+        q: "Aceita plano de saúde?",
+        a: "Atendo apenas particular, mas emito recibo para que você possa solicitar o reembolso junto ao seu convênio médico. A maioria dos planos oferece essa opção."
+    },
+    {
+        q: "Como funciona a primeira sessão?",
+        a: "É um momento para nos conhecermos. Você me conta um pouco sobre o que te traz à terapia, e eu explico como trabalho. O objetivo é que você sinta se sou a profissional certa para te acompanhar."
+    },
+    {
+        q: "Qual a frequência das sessões?",
+        a: "Geralmente, as sessões são semanais. Isso ajuda a criar vínculo e manter o ritmo do processo terapêutico, mas tudo é avaliado caso a caso."
+    }
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<!doctype html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letícia Zenon | Psicóloga Clínica</title>
+    <meta name="description" content="Psicoterapia com acolhimento e escuta ativa. Um espaço seguro para ressignificar sua história.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navegação -->
+    <nav class="fixed w-full z-50 bg-zenon-bg/90 backdrop-blur-sm border-b border-zenon-soft transition-all duration-300" id="navbar">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="font-serif text-2xl text-zenon-dark tracking-wide">
+                        Letícia Zenon<span class="text-zenon-primary text-4xl">.</span>
+                    </a>
+                </div>
+                
+                <!-- Menu Desktop -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#sobre" class="text-zenon-text hover:text-zenon-primary transition-colors text-sm uppercase tracking-widest font-light">Sobre Mim</a>
+                    <a href="#terapia" class="text-zenon-text hover:text-zenon-primary transition-colors text-sm uppercase tracking-widest font-light">A Terapia</a>
+                    <a href="#duvidas" class="text-zenon-text hover:text-zenon-primary transition-colors text-sm uppercase tracking-widest font-light">Dúvidas</a>
+                    <a href="#contato" class="bg-zenon-dark text-white px-6 py-2 rounded-full text-sm hover:bg-zenon-primary transition-colors duration-300 shadow-soft tracking-wide">
+                        Agendar Sessão
+                    </a>
+                </div>
+
+                <!-- Menu Mobile Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-zenon-dark hover:text-zenon-primary focus:outline-none">
+                        <Menu class="w-6 h-6" />
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-zenon-soft absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-1 text-center">
+                <a href="#sobre" class="block px-3 py-3 text-zenon-text hover:bg-zenon-soft hover:text-zenon-dark">Sobre Mim</a>
+                <a href="#terapia" class="block px-3 py-3 text-zenon-text hover:bg-zenon-soft hover:text-zenon-dark">A Terapia</a>
+                <a href="#duvidas" class="block px-3 py-3 text-zenon-text hover:bg-zenon-soft hover:text-zenon-dark">Dúvidas Frequentes</a>
+                <a href="#contato" class="block px-3 py-3 mt-4 text-white bg-zenon-dark rounded-md">Agendar Sessão</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Texto Hero -->
+                <div class="reveal-on-scroll space-y-8 text-center lg:text-left">
+                    <span class="inline-block py-1 px-3 rounded-full bg-zenon-green/30 text-zenon-dark text-xs font-bold tracking-widest uppercase mb-2">
+                        Psicologia Clínica & Psicanálise
+                    </span>
+                    <h1 class="text-4xl lg:text-5xl xl:text-6xl font-serif text-zenon-dark leading-tight">
+                        Um espaço seguro para você <span class="italic text-zenon-primary">ser</span> e <span class="italic text-zenon-primary">sentir</span>.
+                    </h1>
+                    <p class="text-lg lg:text-xl text-zenon-text font-light leading-relaxed max-w-lg mx-auto lg:mx-0">
+                        O processo terapêutico é um convite gentil para olhar para si mesma. Sem julgamentos, com acolhimento e no seu tempo.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+                        <a href="#contato" class="inline-flex justify-center items-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-zenon-primary hover:bg-zenon-dark transition-all duration-300 shadow-soft">
+                            Conversar com Letícia
+                        </a>
+                        <a href="#sobre" class="inline-flex justify-center items-center px-8 py-3 border border-zenon-primary text-base font-medium rounded-full text-zenon-primary bg-transparent hover:bg-zenon-soft transition-all duration-300">
+                            Saiba mais
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Imagem Hero -->
+                <div class="relative reveal-on-scroll delay-200">
+                    <div class="aspect-[4/5] rounded-t-full rounded-b-[100px] overflow-hidden shadow-2xl relative z-10 mx-auto max-w-md">
+                        <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=1000&auto=format&fit=crop" alt="Ambiente de terapia acolhedor" class="object-cover w-full h-full hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="absolute top-10 -right-4 w-full h-full bg-zenon-green/40 rounded-t-full rounded-b-[100px] -z-10 transform translate-x-4 translate-y-4"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Identificação (Permissão para sentir) -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-serif text-zenon-dark mb-12">Você não precisa carregar tudo sozinha</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                {cards.map((card) => (
+                    <div class={`reveal-on-scroll p-8 rounded-2xl bg-zenon-bg hover:bg-zenon-soft transition-colors duration-300`}>
+                        <div class="w-12 h-12 bg-zenon-green/50 rounded-full flex items-center justify-center mx-auto mb-6 text-zenon-dark">
+                            <card.Icon class="w-6 h-6" />
+                        </div>
+                        <h3 class="text-xl font-serif mb-3 text-zenon-dark">{card.title}</h3>
+                        <p class="text-sm font-light leading-relaxed">
+                            {card.desc}
+                        </p>
+                    </div>
+                ))}
+            </div>
+
+            <div class="mt-12 reveal-on-scroll">
+                <p class="text-lg text-zenon-text font-light italic">
+                    "Pedir ajuda não é sinal de fraqueza, é um ato de coragem e amor próprio."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Mim -->
+    <section id="sobre" class="py-20 bg-zenon-soft/30">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:flex lg:items-center lg:gap-16">
+                <div class="lg:w-1/2 mb-10 lg:mb-0 relative reveal-on-scroll">
+                    <div class="relative overflow-hidden rounded-lg shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop" alt="Psicóloga" class="w-full object-cover h-[500px]">
+                        <div class="absolute inset-0 bg-stone-500/10 mix-blend-multiply"></div>
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-lg shadow-soft max-w-xs hidden md:block">
+                        <p class="font-serif text-4xl text-zenon-primary mb-1">10+</p>
+                        <p class="text-sm text-zenon-text uppercase tracking-wider">Anos de experiência</p>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2 reveal-on-scroll delay-100">
+                    <h2 class="text-3xl lg:text-4xl font-serif text-zenon-dark mb-6">Olá, sou Letícia Zenon.</h2>
+                    <div class="w-16 h-1 bg-zenon-primary mb-8"></div>
+                    
+                    <div class="space-y-4 text-zenon-text font-light text-lg leading-relaxed">
+                        <p>
+                            Acredito que a terapia é o encontro de duas humanidades. Meu trabalho é oferecer uma escuta técnica, mas profundamente humana, para que você possa organizar o que sente.
+                        </p>
+                        <p>
+                            Sou graduada em Psicologia, com especialização em Psicanálise e Saúde Mental. Ao longo da minha trajetória, tenho ajudado mulheres a reconstruírem sua autoestima e a lidarem com a ansiedade de forma mais leve.
+                        </p>
+                        <p>
+                            Aqui, não existem julgamentos. Existe um compromisso ético com o seu bem-estar e com a sua história.
+                        </p>
+                    </div>
+
+                    <div class="mt-8 pt-8 border-t border-zenon-dark/10 flex flex-wrap gap-4">
+                        <div class="flex items-center gap-2 text-sm text-zenon-dark/70">
+                            <GraduationCap class="w-5 h-5" />
+                            <span>CRP 00/00000</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-zenon-dark/70">
+                            <Globe class="w-5 h-5" />
+                            <span>Atendimento Online & Presencial</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Como Funciona / Serviços -->
+    <section id="terapia" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-on-scroll">
+                <h2 class="text-3xl font-serif text-zenon-dark">Como posso te ajudar hoje?</h2>
+                <p class="mt-4 text-zenon-text font-light">Modalidades de atendimento pensadas para sua rotina.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Online -->
+                <div class="reveal-on-scroll group border border-zenon-soft p-8 rounded-xl hover:shadow-soft transition-all duration-300 hover:border-zenon-green/50">
+                    <div class="flex justify-between items-start mb-6">
+                        <h3 class="text-2xl font-serif text-zenon-dark">Terapia Online</h3>
+                        <div class="bg-zenon-green/30 p-2 rounded-full text-zenon-dark">
+                            <Video class="w-6 h-6" />
+                        </div>
+                    </div>
+                    <p class="text-zenon-text font-light mb-6">
+                        Realize suas sessões do conforto da sua casa ou de onde estiver, com total sigilo e segurança através de plataformas criptografadas.
+                    </p>
+                    <ul class="space-y-2 mb-8 text-sm text-zenon-text/80">
+                        <li class="flex items-center gap-2"><Check class="w-4 h-4 text-zenon-primary" /> Sessões de 50 minutos</li>
+                        <li class="flex items-center gap-2"><Check class="w-4 h-4 text-zenon-primary" /> Flexibilidade de horários</li>
+                        <li class="flex items-center gap-2"><Check class="w-4 h-4 text-zenon-primary" /> Atendimento via Google Meet/Zoom</li>
+                    </ul>
+                    <a href="https://wa.me/5511999999999" class="block w-full text-center py-3 border border-zenon-dark text-zenon-dark rounded-lg hover:bg-zenon-dark hover:text-white transition-colors text-sm uppercase tracking-wide">
+                        Agendar Online
+                    </a>
+                </div>
+
+                <!-- Presencial -->
+                <div class="reveal-on-scroll delay-100 group border border-zenon-soft p-8 rounded-xl hover:shadow-soft transition-all duration-300 hover:border-zenon-primary/30">
+                    <div class="flex justify-between items-start mb-6">
+                        <h3 class="text-2xl font-serif text-zenon-dark">Terapia Presencial</h3>
+                        <div class="bg-zenon-primary/20 p-2 rounded-full text-zenon-dark">
+                            <MapPin class="w-6 h-6" />
+                        </div>
+                    </div>
+                    <p class="text-zenon-text font-light mb-6">
+                        Um espaço físico preparado para te acolher. O consultório é um ambiente neutro, silencioso e seguro, pensado para desconectar você do mundo externo.
+                    </p>
+                    <ul class="space-y-2 mb-8 text-sm text-zenon-text/80">
+                        <li class="flex items-center gap-2"><Check class="w-4 h-4 text-zenon-primary" /> Localização acessível</li>
+                        <li class="flex items-center gap-2"><Check class="w-4 h-4 text-zenon-primary" /> Ambiente climatizado e acolhedor</li>
+                        <li class="flex items-center gap-2"><Check class="w-4 h-4 text-zenon-primary" /> Protocolos de biossegurança</li>
+                    </ul>
+                    <a href="https://wa.me/5511999999999" class="block w-full text-center py-3 border border-zenon-dark text-zenon-dark rounded-lg hover:bg-zenon-dark hover:text-white transition-colors text-sm uppercase tracking-wide">
+                        Consultar Endereço
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section class="py-20 bg-zenon-bg relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-64 h-64 bg-zenon-green/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <Quote class="w-10 h-10 text-zenon-primary/40 mx-auto mb-6" />
+            <h2 class="text-2xl md:text-3xl font-serif text-zenon-dark italic mb-10">
+                "Comecei a terapia com medo de ser julgada, mas encontrei na Letícia um porto seguro. Hoje consigo lidar com minhas crises de forma muito mais gentil."
+            </h2>
+            <div class="flex items-center justify-center gap-4">
+                <div class="w-12 h-1 bg-zenon-primary rounded-full"></div>
+                <p class="text-sm font-bold text-zenon-dark tracking-wider">M.S. — Paciente há 1 ano</p>
+                <div class="w-12 h-1 bg-zenon-primary rounded-full"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="duvidas" class="py-20 bg-white">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-serif text-zenon-dark text-center mb-12">Dúvidas Frequentes</h2>
+            
+            <div class="space-y-4">
+                {faqs.map((faq) => (
+                    <div class="border-b border-zenon-soft pb-4 reveal-on-scroll">
+                        <button class="accordion-btn flex justify-between items-center w-full text-left focus:outline-none py-2 group cursor-pointer">
+                            <span class="text-lg text-zenon-dark font-medium group-hover:text-zenon-primary transition-colors">{faq.q}</span>
+                            <ChevronDown class="w-5 h-5 text-zenon-text transition-transform duration-300" />
+                        </button>
+                        <div class="hidden text-zenon-text font-light text-sm leading-relaxed py-2">
+                            {faq.a}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contato" class="bg-zenon-soft/50 pt-20 pb-10 border-t border-zenon-soft">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-12 mb-16">
+                <div>
+                    <h3 class="font-serif text-2xl text-zenon-dark mb-6">Letícia Zenon<span class="text-zenon-primary">.</span></h3>
+                    <p class="text-zenon-text font-light mb-6 leading-relaxed">
+                        Psicóloga Clínica<br>
+                        CRP 00/00000
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-zenon-text hover:text-zenon-primary transition-colors"><Instagram class="w-5 h-5" /></a>
+                        <a href="#" class="text-zenon-text hover:text-zenon-primary transition-colors"><Linkedin class="w-5 h-5" /></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-zenon-dark mb-6 uppercase tracking-widest text-xs">Menu</h4>
+                    <ul class="space-y-3 font-light text-zenon-text">
+                        <li><a href="#sobre" class="hover:text-zenon-primary transition-colors">Sobre</a></li>
+                        <li><a href="#terapia" class="hover:text-zenon-primary transition-colors">Serviços</a></li>
+                        <li><a href="#duvidas" class="hover:text-zenon-primary transition-colors">Dúvidas</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-zenon-dark mb-6 uppercase tracking-widest text-xs">Entre em contato</h4>
+                    <a href="https://wa.me/5511999999999" class="inline-flex items-center justify-center w-full px-6 py-3 bg-[#25D366] text-white font-medium rounded-lg hover:bg-[#128C7E] transition-all duration-300 shadow-sm group">
+                        <MessageCircle class="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+                        WhatsApp
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-zenon-text/10 pt-8 text-center">
+                <p class="text-zenon-text/60 text-xs font-light">&copy; 2026 Letícia Zenon Psicologia.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão Flutuante -->
+    <a href="https://wa.me/5511999999999" class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:bg-[#128C7E] transition-all duration-300 hover:scale-110 flex items-center justify-center" aria-label="Falar no WhatsApp">
+        <MessageCircle class="w-6 h-6" />
+    </a>
+
+    <!-- Scripts (Lógica do cliente) -->
+    <script>
+        // 1. (REMOVIDO) Inicialização do Lucide via script não é mais necessária
+
+        // 2. Menu Mobile
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn?.addEventListener('click', () => {
+            menu?.classList.toggle('hidden');
+        });
+
+        // Fecha menu ao clicar em links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', () => {
+                menu?.classList.add('hidden');
+            });
+        });
+
+        // 3. Accordion (FAQ) - Agora seleciona o SVG diretamente
+        const accordions = document.querySelectorAll('.accordion-btn');
+        accordions.forEach(acc => {
+            acc.addEventListener('click', function() {
+                // @ts-ignore
+                const panel = this.nextElementSibling;
+                // Como usamos lucide-astro, o SVG já está lá, não é mais um 'i'
+                const icon = this.querySelector('svg');
+
+                if (panel.classList.contains('hidden')) {
+                    panel.classList.remove('hidden');
+                    if (icon) icon.style.transform = "rotate(180deg)";
+                } else {
+                    panel.classList.add('hidden');
+                    if (icon) icon.style.transform = "rotate(0deg)";
+                }
+            });
+        });
+
+        // 4. Animação ao rolar (IntersectionObserver)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in-up'); 
+                    entry.target.classList.remove('opacity-0');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Adiciona classe base e observa
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+            el.classList.add('opacity-0'); 
+            observer.observe(el);
+        });
+    </script>
+
+</body>
 </html>

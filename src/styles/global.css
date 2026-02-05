@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  /* Paleta de Cores Personalizada */
+  --color-zenon-bg: #FAF9F6;      /* Off-white quente */
+  --color-zenon-soft: #E8E4E1;    /* Bege transição */
+  --color-zenon-green: #D3E0DC;   /* Verde Pastel */
+  --color-zenon-accent: #8C9A95;  /* Verde Acentuado Suave */
+  --color-zenon-text: #4A4A4A;    /* Cinza Escuro Leitura */
+  --color-zenon-dark: #2C2C2C;    /* Títulos */
+  --color-zenon-primary: #B5A89F; /* Marrom Pastel */
+
+  /* Tipografia */
+  --font-sans: 'Lato', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+
+  /* Sombras */
+  --shadow-soft: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+
+  /* Animações */
+  --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Utilitários globais */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-zenon-bg text-zenon-text font-sans antialiased selection:bg-zenon-green selection:text-zenon-dark;
+}
+
+/* Scrollbar Personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-zenon-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-zenon-green);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-zenon-primary);
+}
