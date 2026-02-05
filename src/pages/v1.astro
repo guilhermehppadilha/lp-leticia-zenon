@@ -1,0 +1,388 @@
+---
+import '../styles/global.css';
+import { 
+    Menu, 
+    Check, 
+    Quote, 
+    Instagram,
+    MessageCircle,
+    Heart,
+    Brain,
+    Shield,
+    MapPin,
+    Facebook,
+    Coffee,
+    Wifi
+} from 'lucide-astro';
+
+// Pontos de identificação (Para quem é)
+const identificationPoints = [
+    "Vive cansada emocionalmente, mesmo “fazendo tudo certo”",
+    "Sente ansiedade, tristeza frequente ou oscilações de humor",
+    "Já tentou ignorar o que sente, mas não está funcionando",
+    "Tem medo de ser julgada ou rotulada",
+    "Quer entender a própria mente sem rótulos fáceis",
+    "Precisa de um espaço seguro pra existir do jeito que está"
+];
+
+// Abordagens Terapêuticas
+const approaches = [
+    "Terapia Cognitivo-Comportamental (TCC)",
+    "ACT (Terapia de Aceitação e Compromisso)",
+    "DBT (Terapia Comportamental Dialética)",
+    "Terapia do Esquema"
+];
+---
+
+<!doctype html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letícia Zenon | Psicóloga Clínica</title>
+    <meta name="description" content="Psicoterapia online com acolhimento e base científica. Um espaço seguro para você existir.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navegação -->
+    <nav class="fixed w-full z-50 bg-zenon-bg/95 backdrop-blur-sm border-b border-zenon-soft transition-all duration-300" id="navbar">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="font-serif text-2xl text-zenon-dark tracking-wide">
+                        Letícia Zenon<span class="text-zenon-primary text-4xl">.</span>
+                    </a>
+                </div>
+                
+                <!-- Menu Desktop -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#para-quem" class="text-zenon-text hover:text-zenon-primary transition-colors text-sm uppercase tracking-widest font-light">Para Quem</a>
+                    <a href="#metodologia" class="text-zenon-text hover:text-zenon-primary transition-colors text-sm uppercase tracking-widest font-light">Como Trabalho</a>
+                    <a href="#sobre" class="text-zenon-text hover:text-zenon-primary transition-colors text-sm uppercase tracking-widest font-light">Minha História</a>
+                    <a href="#online" class="text-zenon-text hover:text-zenon-primary transition-colors text-sm uppercase tracking-widest font-light">Online</a>
+                    <a href="#contato" class="bg-zenon-dark text-white px-6 py-2 rounded-full text-sm hover:bg-zenon-primary transition-colors duration-300 shadow-soft tracking-wide">
+                        Conversar
+                    </a>
+                </div>
+
+                <!-- Menu Mobile Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-zenon-dark hover:text-zenon-primary focus:outline-none">
+                        <Menu class="w-6 h-6" />
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-zenon-soft absolute w-full shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-1 text-center">
+                <a href="#para-quem" class="block px-3 py-3 text-zenon-text hover:bg-zenon-soft hover:text-zenon-dark">Para Quem</a>
+                <a href="#metodologia" class="block px-3 py-3 text-zenon-text hover:bg-zenon-soft hover:text-zenon-dark">Como Trabalho</a>
+                <a href="#sobre" class="block px-3 py-3 text-zenon-text hover:bg-zenon-soft hover:text-zenon-dark">Minha História</a>
+                <a href="#online" class="block px-3 py-3 text-zenon-text hover:bg-zenon-soft hover:text-zenon-dark">Terapia Online</a>
+                <a href="#contato" class="block px-3 py-3 mt-4 text-white bg-zenon-dark rounded-md">Falar no WhatsApp</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Chamada Principal) -->
+    <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-gradient-to-b from-zenon-bg to-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Texto Hero -->
+                <div class="reveal-on-scroll space-y-6 text-center lg:text-left order-2 lg:order-1">
+                    <h1 class="text-3xl lg:text-5xl font-serif text-zenon-dark leading-tight">
+                        Você não precisa dar conta de <span class="italic text-zenon-primary">tudo</span> sozinha.
+                    </h1>
+                    
+                    <div class="space-y-4 text-lg text-zenon-text font-light leading-relaxed">
+                        <p>
+                            E não precisa estar “no fundo do poço” pra buscar ajuda.
+                            Talvez você esteja funcionando por fora, mas por dentro tudo parece pesado demais.
+                        </p>
+                        <p>
+                            Aqui, a terapia não é sobre te consertar. É sobre te ajudar a entender o que está acontecendo com você — no seu ritmo, com acolhimento e base científica.
+                        </p>
+                    </div>
+
+                    <div class="pt-6">
+                        <p class="text-xs uppercase tracking-widest text-zenon-accent font-bold mb-4">
+                            Psicoterapia online para mulheres cansadas de sobreviver no automático
+                        </p>
+                        <a href="#contato" class="inline-flex justify-center items-center px-8 py-4 border border-transparent text-base font-medium rounded-full text-white bg-zenon-primary hover:bg-zenon-dark transition-all duration-300 shadow-soft hover:shadow-lg transform hover:-translate-y-1">
+                            Quero conversar no WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Imagem Hero (Visual Tranquilo) -->
+                <div class="relative reveal-on-scroll delay-200 order-1 lg:order-2">
+                    <div class="aspect-[4/5] rounded-t-[60px] rounded-b-[50px] overflow-hidden shadow-2xl relative z-10 mx-auto max-w-sm lg:max-w-md">
+                        <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=1000&auto=format&fit=crop" alt="Ambiente de paz e acolhimento" class="object-cover w-full h-full opacity-90 hover:scale-105 transition-transform duration-700">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Para Quem é a Terapia -->
+    <section id="para-quem" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 reveal-on-scroll">
+                <span class="text-zenon-primary text-sm font-bold tracking-widest uppercase">Identificação</span>
+                <h2 class="text-3xl font-serif text-zenon-dark mt-2">Essa terapia é pra você que:</h2>
+            </div>
+            
+            <div class="bg-zenon-bg p-8 md:p-12 rounded-3xl shadow-sm reveal-on-scroll">
+                <div class="grid md:grid-cols-1 gap-6">
+                    {identificationPoints.map((point) => (
+                        <div class="flex items-start gap-4">
+                            <div class="bg-zenon-green/40 p-1.5 rounded-full mt-1 flex-shrink-0 text-zenon-dark">
+                                <Check class="w-4 h-4" />
+                            </div>
+                            <p class="text-zenon-text text-lg font-light leading-snug">{point}</p>
+                        </div>
+                    ))}
+                </div>
+                
+                <div class="mt-10 text-center border-t border-zenon-soft pt-8">
+                    <p class="text-xl font-serif text-zenon-dark italic">
+                        "Você não precisa chegar pronta. <br class="md:hidden"/> A gente constrói isso juntas."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Como Eu Trabalho -->
+    <section id="metodologia" class="py-20 bg-zenon-soft/20">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="reveal-on-scroll">
+                    <h2 class="text-3xl font-serif text-zenon-dark mb-6">Como eu trabalho</h2>
+                    <div class="space-y-4 text-zenon-text font-light leading-relaxed">
+                        <p>
+                            Meu trabalho é baseado em abordagens terapêuticas com respaldo científico, mas, acima de qualquer técnica, eu trabalho com <strong>escuta, vínculo e respeito pela sua história.</strong>
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-2 my-6">
+                            {approaches.map(app => (
+                                <span class="bg-white px-3 py-1 rounded-full text-xs text-zenon-text border border-zenon-soft shadow-sm">
+                                    {app}
+                                </span>
+                            ))}
+                        </div>
+
+                        <ul class="space-y-3 mt-6">
+                            <li class="flex items-center gap-3">
+                                <Shield class="w-5 h-5 text-zenon-primary" />
+                                <span>Aqui não tem fórmula pronta</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <Coffee class="w-5 h-5 text-zenon-primary" />
+                                <span>Não tem pressão pra melhorar rápido</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <Brain class="w-5 h-5 text-zenon-primary" />
+                                <span>Não tem discurso vazio de positividade</span>
+                            </li>
+                        </ul>
+                        
+                        <p class="mt-6 italic text-zenon-dark">
+                            A terapia é construída de forma personalizada, de acordo com o que você vive, sente e consegue sustentar.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Ilustração abstrata/suave -->
+                <div class="relative h-full min-h-[400px] reveal-on-scroll delay-100 bg-white p-8 rounded-2xl shadow-soft flex items-center justify-center text-center">
+                   <div class="space-y-4">
+                        <Heart class="w-16 h-16 text-zenon-green mx-auto opacity-80" />
+                        <h3 class="text-xl font-serif text-zenon-dark">Vínculo e Ciência</h3>
+                        <p class="text-sm font-light text-zenon-text px-8">
+                            Unindo o acolhimento humano com as técnicas mais eficazes da psicologia moderna para te dar segurança no processo.
+                        </p>
+                   </div>
+                   <div class="absolute top-0 right-0 w-20 h-20 bg-zenon-primary/10 rounded-bl-full"></div>
+                   <div class="absolute bottom-0 left-0 w-20 h-20 bg-zenon-green/20 rounded-tr-full"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Minha História (Autoridade Humana) -->
+    <section id="sobre" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:flex lg:items-center lg:gap-16">
+                
+                <!-- Foto -->
+                <div class="lg:w-9/12 mb-10 lg:mb-0 relative reveal-on-scroll">
+                    <div class="relative overflow-hidden aspect-[4/4]">
+                        <img src="base-let.jpg" alt="Psicóloga Letícia Zenon" class="w-full h-full object-cover">
+                        <!-- <div class="absolute inset-0 bg-stone-500/10 mix-blend-multiply"></div> -->
+                    </div>
+                </div>
+
+                <!-- Texto Bio -->
+                <div class="lg:w-7/12 reveal-on-scroll delay-100">
+                    <span class="text-zenon-primary text-sm font-bold tracking-widest uppercase">Sobre Mim</span>
+                    <h2 class="text-3xl lg:text-4xl font-serif text-zenon-dark mb-6 mt-2">Eu não falo de saúde mental só a partir dos livros.</h2>
+                    
+                    <div class="space-y-5 text-zenon-text font-light text-lg leading-relaxed">
+                        <p>
+                            Minha trajetória pessoal inclui o diagnóstico de <strong>Transtorno Afetivo Bipolar tipo II</strong> — e isso mudou profundamente a forma como eu vejo o sofrimento psíquico.
+                        </p>
+                        <p>
+                            Eu sei, na prática, como é tentar funcionar quando tudo pesa, lidar com a culpa por não “dar conta” e conviver com oscilações internas que ninguém vê.
+                        </p>
+                        <p>
+                            Isso não me define. Mas me tornou uma profissional mais sensível, ética e cuidadosa.
+                        </p>
+                        
+                        <div class="bg-zenon-bg p-6 border-l-4 border-zenon-primary mt-6">
+                            <p class="font-serif text-xl text-zenon-dark italic">
+                                "Aqui, sua dor não vira rótulo. <br/> Vira ponto de partida para compreensão."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Psicoterapia Online -->
+    <section id="online" class="py-20 bg-zenon-bg relative overflow-hidden">
+        <!-- Decorativo de fundo -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/40 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12 reveal-on-scroll">
+                <Wifi class="w-10 h-10 text-zenon-dark mx-auto mb-4" />
+                <h2 class="text-3xl font-serif text-zenon-dark">Psicoterapia Online — Funciona mesmo?</h2>
+            </div>
+
+            <div class="bg-white p-8 md:p-12 rounded-2xl shadow-soft reveal-on-scroll">
+                <p class="text-xl font-serif text-zenon-dark text-center mb-8">Sim.</p>
+                
+                <div class="space-y-6 text-zenon-text font-light leading-relaxed">
+                    <p>
+                        A psicoterapia online é regulamentada pelo Conselho Federal de Psicologia e tem a mesma eficácia da presencial. O vínculo terapêutico não depende do lugar físico, mas da qualidade da escuta e da relação construída.
+                    </p>
+                    <p>
+                        E isso acontece — de verdade — mesmo à distância.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6 mt-10 border-t border-zenon-soft pt-8">
+                    <div class="text-center">
+                        <div class="bg-zenon-green/30 w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <MapPin class="w-5 h-5 text-zenon-dark" />
+                        </div>
+                        <h4 class="font-bold text-zenon-dark text-sm mb-1">Seu Espaço</h4>
+                        <p class="text-xs text-zenon-text">Esteja no conforto e segurança do seu próprio ambiente.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-zenon-green/30 w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <Coffee class="w-5 h-5 text-zenon-dark" />
+                        </div>
+                        <h4 class="font-bold text-zenon-dark text-sm mb-1">Sem Deslocamento</h4>
+                        <p class="text-xs text-zenon-text">Evite trânsito e ganhe tempo para você.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-zenon-green/30 w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <Check class="w-5 h-5 text-zenon-dark" />
+                        </div>
+                        <h4 class="font-bold text-zenon-dark text-sm mb-1">Constância</h4>
+                        <p class="text-xs text-zenon-text">Mais fácil de manter a frequência no processo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Convite Final (Conversão) -->
+    <section id="contato" class="py-24 bg-zenon-dark text-white text-center">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 reveal-on-scroll">
+            <h2 class="text-3xl md:text-4xl font-serif mb-6">Se algo aqui fez sentido, talvez seja um bom momento pra conversar.</h2>
+            <p class="text-lg font-light text-zenon-soft mb-10 leading-relaxed">
+                Você não precisa decidir nada agora. <br />
+                A gente pode começar com uma troca simples, sem compromisso.
+            </p>
+            
+            <div class="flex flex-col items-center gap-4">
+                <a href="https://wa.me/5511999999999" class="inline-flex items-center justify-center px-8 py-4 bg-[#25D366] text-white font-medium rounded-full hover:bg-[#128C7E] transition-all duration-300 shadow-lg hover:shadow-xl group">
+                    <MessageCircle class="w-6 h-6 mr-2 group-hover:scale-110 transition-transform" />
+                    Falar no WhatsApp
+                </a>
+                <span class="text-sm text-zenon-soft/60 mt-2">Qualquer coisa, estou por aqui.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-zenon-soft pt-12 pb-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <h3 class="font-serif text-xl text-zenon-dark">Letícia Zenon<span class="text-zenon-primary">.</span></h3>
+                <p class="text-sm text-zenon-text/60 mt-1">Psicóloga Clínica | CRP 00/00000</p>
+            </div>
+            
+            <div class="flex space-x-6">
+                <a href="#" class="text-zenon-text/60 hover:text-zenon-primary transition-colors"><Instagram class="w-5 h-5" /></a>
+                <a href="#" class="text-zenon-text/60 hover:text-zenon-primary transition-colors"><Facebook class="w-5 h-5" /></a>
+            </div>
+        </div>
+        <div class="text-center mt-8 pt-8 border-t border-zenon-soft/50">
+            <p class="text-zenon-text/40 text-xs">&copy; 2026 Letícia Zenon Psicologia. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Botão Flutuante -->
+    <a href="https://wa.me/5511999999999" class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:bg-[#128C7E] transition-all duration-300 hover:scale-110 flex items-center justify-center" aria-label="Falar no WhatsApp">
+        <MessageCircle class="w-6 h-6" />
+    </a>
+
+    <!-- Scripts (Lógica do cliente) -->
+    <script>
+        // Menu Mobile
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn?.addEventListener('click', () => {
+            menu?.classList.toggle('hidden');
+        });
+
+        // Fecha menu ao clicar em links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', () => {
+                menu?.classList.add('hidden');
+            });
+        });
+
+        // Animação ao rolar (IntersectionObserver)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in-up'); 
+                    entry.target.classList.remove('opacity-0');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+            el.classList.add('opacity-0'); 
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>
